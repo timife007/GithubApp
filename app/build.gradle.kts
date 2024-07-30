@@ -9,11 +9,11 @@ plugins {
 }
 
 android {
-    namespace = "com.timife.skiywatertest"
+    namespace = "com.timife.githubapp"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.timife.skiywatertest"
+        applicationId = "com.timife.githubapp"
         minSdk = 24
         targetSdk = 34
         versionCode = 1
