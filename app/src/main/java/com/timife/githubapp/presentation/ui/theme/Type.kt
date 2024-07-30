@@ -1,4 +1,4 @@
-package com.timife.githubapp.ui.theme
+package com.timife.githubapp.presentation.ui.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle
