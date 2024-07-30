@@ -23,6 +23,13 @@ android {
         vectorDrawables {
             useSupportLibrary = true
         }
+
+        val bearerToken = project.properties["bearer-token"]
+        buildConfigField("String", "BEARER_TOKEN", "\"$bearerToken\"")
+
+    }
+    buildFeatures{
+        buildConfig = true
     }
 
     buildTypes {

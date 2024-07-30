@@ -5,6 +5,7 @@ import com.chuckerteam.chucker.api.ChuckerCollector
 import com.chuckerteam.chucker.api.ChuckerInterceptor
 import com.chuckerteam.chucker.api.RetentionManager
 import com.timife.githubapp.data.datasources.remote.RemoteDatasource
+import com.timife.githubapp.interceptors.AuthInterceptor
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -19,23 +20,29 @@ const val BASE_URL = "https://api.github.com/"
 @InstallIn(SingletonComponent::class)
 object AppModule {
 
+
+    @Provides
+    @Singleton
+    fun provideOkHttpClient(authInterceptor: AuthInterceptor, app: Application): OkHttpClient {
+        return OkHttpClient.Builder()
+            .addInterceptor(authInterceptor)
+            .addInterceptor(
+                ChuckerInterceptor.Builder(app)
+                    .collector(ChuckerCollector(app, showNotification = true, retentionPeriod = RetentionManager.Period.ONE_WEEK))
+                    .maxContentLength(250000L)
+                    .redactHeaders(emptySet())
+                    .alwaysReadResponseBody(false)
+                    .build())
+            .build()
+    }
+
     @Singleton
     @Provides
-    fun getApi(app: Application): RemoteDatasource {
+    fun getApi(okHttpClient: OkHttpClient): RemoteDatasource {
         return Retrofit.Builder()
             .baseUrl(BASE_URL)
             .addConverterFactory(MoshiConverterFactory.create())
-            .client(
-                OkHttpClient.Builder()
-                    .addInterceptor(
-                        ChuckerInterceptor.Builder(app)
-                            .collector(ChuckerCollector(app, showNotification = true, retentionPeriod = RetentionManager.Period.ONE_WEEK))
-                            .maxContentLength(250000L)
-                            .redactHeaders(emptySet())
-                            .alwaysReadResponseBody(false)
-                            .build()
-                    ).build()
-            )
+            .client(okHttpClient)
             .build()
             .create(RemoteDatasource::class.java)
     }
