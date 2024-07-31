@@ -1,7 +1,9 @@
 package com.timife.githubapp.data.mappers
 
+import com.timife.githubapp.data.model.repos.RepoDto
 import com.timife.githubapp.data.model.userprofile.UserProfileDto
 import com.timife.githubapp.data.model.users.UserDto
+import com.timife.githubapp.domain.model.repos.Repo
 import com.timife.githubapp.domain.model.userprofile.UserProfile
 import com.timife.githubapp.domain.model.users.User
 
@@ -36,3 +38,21 @@ fun List<UserDto>.toListOfUsers(): List<User>{
         )
     }
 }
+
+fun List<RepoDto>.toListOfRepos():List<Repo>{
+    return this.map {
+        Repo(
+            id = it.id,
+            name = it.name,
+            private = it.private,
+            description = it.description ?: "",
+            fork = it.fork,
+            gitUrl = it.gitUrl,
+            language = it.language ?: "",
+            forksCount = it.forksCount,
+            visibility = it.visibility,
+            stars = it.stargazersCount
+        )
+    }
+}
+

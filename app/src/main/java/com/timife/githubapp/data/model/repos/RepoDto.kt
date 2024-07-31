@@ -122,7 +122,7 @@ data class RepoDto(
     @Json(name = "owner")
     val owner: OwnerDto,
     @Json(name = "private")
-    val `private`: Boolean,
+    val private: Boolean,
     @Json(name = "pulls_url")
     val pullsUrl: String,
     @Json(name = "pushed_at")
