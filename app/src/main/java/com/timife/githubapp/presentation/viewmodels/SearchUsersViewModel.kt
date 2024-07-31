@@ -22,8 +22,8 @@ class SearchUsersViewModel @Inject constructor(
 
 
     fun getUsers(user:String){
+        _uiState.value = SearchUiState.Loading
         viewModelScope.launch {
-            _uiState.value = SearchUiState.Loading
             searchUseCase(user).collect{
                 when(it){
                     is Result.Success -> {

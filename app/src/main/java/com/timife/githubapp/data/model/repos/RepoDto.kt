@@ -5,7 +5,6 @@ import com.squareup.moshi.Json
 import kotlinx.parcelize.Parcelize
 import android.os.Parcelable
 
-@Parcelize
 data class RepoDto(
     @Json(name = "allow_forking")
     val allowForking: Boolean,
@@ -165,4 +164,4 @@ data class RepoDto(
     val watchersCount: Int,
     @Json(name = "web_commit_signoff_required")
     val webCommitSignoffRequired: Boolean
-) : Parcelable
+)

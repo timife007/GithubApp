@@ -1,3 +1,5 @@
+import java.util.Properties
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
@@ -24,8 +26,10 @@ android {
             useSupportLibrary = true
         }
 
-        val bearerToken = project.properties["bearer-token"]
-        buildConfigField("String", "BEARER_TOKEN", "\"$bearerToken\"")
+        val properties = Properties().apply{
+            load(project.rootProject.file("local.properties").inputStream())
+        }
+        buildConfigField("String","BEARER_TOKEN","\"${properties.getProperty("bearer-token")}\"")
 
     }
     buildFeatures{
@@ -94,6 +98,11 @@ dependencies {
     implementation(libs.coil)
     implementation(libs.okHttp)
     implementation(libs.interceptor)
+    implementation(libs.moshi.converter)
+    implementation(libs.moshi.kotlin)
+    implementation(libs.json.serializer)
+    implementation(libs.logging.interceptor)
+//    implementation(l)
 //    implementation(libs.hilt.compiler)
     implementation(libs.chuckerLib)
     testImplementation(libs.junit)

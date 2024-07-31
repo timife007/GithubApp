@@ -29,6 +29,8 @@ ksp = "2.0.0-1.0.21"
 appcompat = "1.7.0"
 material = "1.12.0"
 annotation = "1.6.0"
+moshi="1.15.1"
+json-serializer = "1.3.0"
 
 
 [libraries]
@@ -66,10 +68,14 @@ material = { group = "com.google.android.material", name = "material", version.r
 retrofit = {group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofit"}
 chuckerLib = {group = "com.github.chuckerteam.chucker", name = "library", version.ref = "chucker"}
 chuckerNoOp = {group = "com.github.chuckerteam.chucker", name = "library-no-op", version.ref = "chucker"}
-moshi = {group = "com.squareup.retrofit2", name = "converter-moshi", version.ref = "retrofit"}
+moshi-converter = {group = "com.squareup.retrofit2", name = "converter-moshi", version.ref = "retrofit"}
 okHttp = {group = "com.squareup.okhttp3", name = "okhttp", version.ref = "okHttp"}
 interceptor = {group = "com.squareup.okhttp3", name = "logging-interceptor", version.ref = "okHttp"}
-#jetbrainsCompose = { id = "org.jetbrains.compose", version.ref = "compose" }
+moshi = {group = "com.squareup.moshi", name = "moshi", version.ref = "moshi"}
+moshi-kotlin = {group = "com.squareup.moshi", name = "moshi-kotlin", version.ref = "moshi"}
+json-serializer = {group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version.ref = "json-serializer"}
+logging-interceptor = {group = "com.squareup.okhttp3", name = "logging-interceptor", version.ref = "okHttp"}
+#jetbrainsCompose = { id = "org.jetbrains.compose", version.ref = "compose"
 
 
 [plugins]

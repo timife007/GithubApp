@@ -1,11 +1,8 @@
 package com.timife.githubapp.data.model.users
 
-
 import com.squareup.moshi.Json
-import kotlinx.parcelize.Parcelize
-import android.os.Parcelable
 
-@Parcelize
+
 data class UserDto(
     @Json(name = "avatar_url")
     val avatarUrl: String,
@@ -45,4 +42,4 @@ data class UserDto(
     val url: String,
     @Json(name = "score")
     val score:Int?
-) : Parcelable
+)

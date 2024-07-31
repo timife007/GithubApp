@@ -1,5 +1,6 @@
 package com.timife.githubapp.data.repositories
 
+import android.util.Log
 import com.timife.githubapp.data.datasources.remote.RemoteDatasource
 import com.timife.githubapp.data.mappers.toListOfRepos
 import com.timife.githubapp.data.mappers.toListOfUsers
@@ -22,10 +23,12 @@ class UserRepositoryImpl @Inject constructor(
         return flow {
             try {
                 val response = remoteDatasource.searchUsers(query)
-                response.body()?.let {userDtos ->
-                    emit(Result.Success(userDtos.toListOfUsers()))
+                response.body()?.let {searchResponse ->
+                    searchResponse.userDtos?.let { Result.Success(it.toListOfUsers()) }
+                        ?.let { emit(it) }
                 }
             }catch (e:Exception){
+                Log.d("CHECK ERROR",e.localizedMessage)
                 emit(Result.Error(e))
             }
         }

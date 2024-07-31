@@ -2,10 +2,7 @@ package com.timife.githubapp.data.model.repos
 
 
 import com.squareup.moshi.Json
-import kotlinx.parcelize.Parcelize
-import android.os.Parcelable
 
-@Parcelize
 data class OwnerDto(
     @Json(name = "avatar_url")
     val avatarUrl: String,
@@ -43,4 +40,4 @@ data class OwnerDto(
     val type: String,
     @Json(name = "url")
     val url: String
-) : Parcelable
+)

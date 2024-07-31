@@ -5,7 +5,7 @@ import com.squareup.moshi.Json
 import kotlinx.parcelize.Parcelize
 import android.os.Parcelable
 
-@Parcelize
+
 data class LicenseDto(
     @Json(name = "key")
     val key: String,
@@ -17,4 +17,4 @@ data class LicenseDto(
     val spdxId: String,
     @Json(name = "url")
     val url: String
-) : Parcelable
+)

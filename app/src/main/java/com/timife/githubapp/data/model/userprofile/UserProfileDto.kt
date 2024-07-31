@@ -5,7 +5,7 @@ import com.squareup.moshi.Json
 import kotlinx.parcelize.Parcelize
 import android.os.Parcelable
 
-@Parcelize
+
 data class UserProfileDto(
     @Json(name = "avatar_url")
     val avatarUrl: String,
@@ -71,4 +71,4 @@ data class UserProfileDto(
     val updatedAt: String,
     @Json(name = "url")
     val url: String
-) : Parcelable
+)
