@@ -19,30 +19,30 @@ import javax.inject.Singleton
 class UserRepositoryImpl @Inject constructor(
     private val remoteDatasource: RemoteDatasource
 ) : UserRepository {
-    override fun getUsers(query: String): Flow<Result<List<User>>> {
+    override fun getUsers(query: String): Flow<List<User>> {
         return flow {
             try {
                 val response = remoteDatasource.searchUsers(query)
                 response.body()?.let {searchResponse ->
-                    searchResponse.userDtos?.let { Result.Success(it.toListOfUsers()) }
-                        ?.let { emit(it) }
+                    searchResponse.userDtos.toListOfUsers()
+                        .let { emit(it) }
                 }
             }catch (e:Exception){
                 Log.d("CHECK ERROR",e.localizedMessage)
-                emit(Result.Error(e))
+                throw RuntimeException(e.localizedMessage)
             }
         }
     }
 
-    override fun getUserProfile(user:String): Flow<Result<UserProfile>> {
+    override fun getUserProfile(user:String): Flow<UserProfile> {
         return flow {
             try {
                 val response = remoteDatasource.getUserProfile(user)
                 response.body()?.let {userProfileDto ->
-                    emit(Result.Success(userProfileDto.toUserProfile()))
+                    emit(userProfileDto.toUserProfile())
                 }
             }catch (e:Exception){
-                emit(Result.Error(e))
+                throw RuntimeException(e.localizedMessage)
             }
         }
     }

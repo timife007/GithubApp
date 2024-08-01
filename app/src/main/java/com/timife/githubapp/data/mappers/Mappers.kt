@@ -9,19 +9,19 @@ import com.timife.githubapp.domain.model.users.User
 
 fun UserProfileDto.toUserProfile():UserProfile{
     return UserProfile(
-        bio = bio,
-        followers = followers,
-        followersUrl = followersUrl,
-        following = following,
-        followingUrl = followingUrl,
+        bio = bio ?: "",
+        followers = followers ?: 0,
+        followersUrl = followersUrl ?: "",
+        following = following ?: 0,
+        followingUrl = followingUrl ?: "",
         id = id,
-        location = location,
-        username = login,
-        name = name,
-        publicRepos = publicRepos,
-        reposUrl = reposUrl,
-        url = url,
-        avatarUrl = avatarUrl
+        location = location ?: "",
+        username = login ?: "",
+        name = name ?: "",
+        publicRepos = publicRepos ?: 0,
+        reposUrl = reposUrl ?: "",
+        url = url ?: "",
+        avatarUrl = avatarUrl ?: ""
     )
 }
 

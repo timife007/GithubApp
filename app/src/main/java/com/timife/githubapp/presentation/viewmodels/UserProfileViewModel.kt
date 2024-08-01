@@ -19,18 +19,18 @@ class UserProfileViewModel @Inject constructor(
     val uiState: StateFlow<UserProfileUiState> = _uiState
 
 
-    fun getUsers(user:String){
-        viewModelScope.launch {
-            userProfileUseCase(user).collect{
-                when(it){
-                    is Result.Success -> {
-                        _uiState.value = UserProfileUiState.Success(it.data)
-                    }
-                    is Result.Error -> {
-                        _uiState.value = UserProfileUiState.Error(it.exception.message ?: "User Profile not found")
-                    }
-                }
-            }
-        }
-    }
+//    fun getUsers(user:String){
+//        viewModelScope.launch {
+//            userProfileUseCase(user).collect{
+//                when(it){
+//                    is Result.Success -> {
+//                        _uiState.value = UserProfileUiState.Success(it.data)
+//                    }
+//                    is Result.Error -> {
+//                        _uiState.value = UserProfileUiState.Error(it.exception.message ?: "User Profile not found")
+//                    }
+//                }
+//            }
+//        }
+//    }
 }

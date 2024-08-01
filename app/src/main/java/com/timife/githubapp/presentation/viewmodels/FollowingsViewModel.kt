@@ -8,9 +8,17 @@ import com.timife.githubapp.domain.usecases.FollowingUseCase
 import com.timife.githubapp.presentation.uistates.FollowersUiState
 import com.timife.githubapp.presentation.uistates.FollowingsUiState
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.CoroutineName
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.async
+import kotlinx.coroutines.cancel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.job
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 @HiltViewModel
@@ -20,7 +28,9 @@ class FollowingsViewModel @Inject constructor(
     private val _uiState = MutableStateFlow<FollowingsUiState>(FollowingsUiState.Loading)
     val uiState: StateFlow<FollowingsUiState> = _uiState
 
-    fun getFollowings(user: String) {
+
+    suspend fun getFollowings(user: String) {
+
         viewModelScope.launch {
             followingUseCase(user).collect {
                 when (it) {

@@ -13,7 +13,7 @@ import retrofit2.http.Query
 
 interface RemoteDatasource {
 
-    @GET("/search/users?page=2")
+    @GET("/search/users")
     suspend fun searchUsers(@Query("q") q: String): Response<SearchResponse>
 
     @GET("/users/{username}")

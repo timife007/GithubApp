@@ -8,9 +8,9 @@ import kotlinx.coroutines.flow.Flow
 
 interface UserRepository {
 
-    fun getUsers(query:String): Flow<Result<List<User>>>
+    fun getUsers(query:String): Flow<List<User>>
 
-    fun getUserProfile(user:String): Flow<Result<UserProfile>>
+    fun getUserProfile(user:String): Flow<UserProfile>
 
     fun getRepos(user: String): Flow<Result<List<Repo>>>
 }

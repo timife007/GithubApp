@@ -10,7 +10,7 @@ import javax.inject.Inject
 class UserProfileUseCase @Inject constructor(
     private val userRepository: UserRepository
 ) {
-    operator fun invoke(param1: String): Flow<Result<UserProfile>> {
+    operator fun invoke(param1: String): Flow<UserProfile> {
         return userRepository.getUserProfile(param1)
     }
 }

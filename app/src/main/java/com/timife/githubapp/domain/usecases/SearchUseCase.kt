@@ -9,7 +9,7 @@ import javax.inject.Inject
 class SearchUseCase @Inject constructor(
     private val userRepository: UserRepository
 ) {
-    operator fun invoke(param1: String): Flow<Result<List<User>>> {
+    operator fun invoke(param1: String): Flow<List<User>> {
         return userRepository.getUsers(param1)
     }
 }
