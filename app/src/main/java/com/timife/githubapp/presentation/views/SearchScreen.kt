@@ -37,6 +37,7 @@ import com.timife.githubapp.presentation.uistates.SearchUiState
 import com.timife.githubapp.presentation.viewmodels.SearchUsersViewModel
 import com.timife.githubapp.presentation.views.components.ErrorView
 import com.timife.githubapp.presentation.views.components.LoadingView
+import com.timife.githubapp.presentation.views.components.SuccessView
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
@@ -94,7 +95,7 @@ fun SearchScreen(
 
                 is SearchUiState.Success -> {
                     val data = (state as SearchUiState.Success).users
-                    com.timife.githubapp.presentation.views.components.SuccessView(
+                    SuccessView(
                         data = data,
                         modifier = Modifier,
                         navController

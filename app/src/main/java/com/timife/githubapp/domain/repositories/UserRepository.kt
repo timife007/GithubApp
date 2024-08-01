@@ -12,5 +12,5 @@ interface UserRepository {
 
     fun getUserProfile(user:String): Flow<UserProfile>
 
-    fun getRepos(user: String): Flow<Result<List<Repo>>>
+    fun getRepos(user: String): Flow<List<Repo>>
 }

@@ -6,9 +6,12 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
@@ -28,117 +31,135 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import coil.compose.AsyncImage
 import com.timife.githubapp.domain.model.userprofile.UserProfile
+import com.timife.githubapp.navigation.Route
+import com.timife.githubapp.presentation.uistates.UserProfileData
 import com.timife.githubapp.presentation.views.TextWithLeadingIcon
+import com.timife.githubapp.presentation.views.UserItem
 
 @Composable
 fun ProfileSuccessView(
-    userProfile: UserProfile,
+    data: UserProfileData,
     onNavigateToFollowers: (String) -> Unit, onNavigateToFollows: (String) -> Unit
 ) {
-    Column(
-        modifier = Modifier.padding(start = 10.dp, end = 10.dp, top = 20.dp),
+    val profile = data.profile
+    val repos = data.repos
+    LazyColumn(
+        modifier = Modifier.padding(start = 10.dp, end = 10.dp, top = 20.dp, bottom = 10.dp),
         verticalArrangement = Arrangement.spacedBy(10.dp)
     ) {
-        Row(
-            horizontalArrangement = Arrangement.spacedBy(10.dp),
-            verticalAlignment = Alignment.CenterVertically
-        ) {
-            AsyncImage(
-                model = userProfile.avatarUrl, contentDescription = null, modifier = Modifier
-                    .clip(
-                        CircleShape
-                    )
-                    .size(50.dp)
-            )
-            Column {
-                Text(
-                    text = userProfile.name,
-                    style = MaterialTheme.typography.bodyLarge.copy(fontWeight = FontWeight.SemiBold)
+        item {
+            Row(
+                horizontalArrangement = Arrangement.spacedBy(10.dp),
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                AsyncImage(
+                    model = profile.avatarUrl, contentDescription = null, modifier = Modifier
+                        .clip(
+                            CircleShape
+                        )
+                        .size(50.dp)
                 )
-                Text(
-                    text = userProfile.username,
-                    style = MaterialTheme.typography.bodyMedium.copy(
-                        fontWeight = FontWeight.Normal,
-                        color = Color.DarkGray
+                Column {
+                    Text(
+                        text = profile.name,
+                        style = MaterialTheme.typography.bodyLarge.copy(fontWeight = FontWeight.SemiBold)
                     )
+                    Text(
+                        text = profile.username,
+                        style = MaterialTheme.typography.bodyMedium.copy(
+                            fontWeight = FontWeight.Normal,
+                            color = Color.DarkGray
+                        )
+                    )
+                }
+            }
+        }
+        item {
+            if (profile.bio.isNotEmpty()) {
+                Text(text = profile.bio, style = MaterialTheme.typography.bodySmall)
+            }
+        }
+
+        item {
+            if (data.profile.location.isNotEmpty()) {
+                TextWithLeadingIcon(
+                    leadingIcon = Icons.Outlined.LocationOn,
+                    text = profile.location
                 )
             }
         }
-        if (userProfile.bio.isNotEmpty()) {
-            Text(text = userProfile.bio, style = MaterialTheme.typography.bodySmall)
-        }
-
-        if (userProfile.location.isNotEmpty()) {
-            TextWithLeadingIcon(
-                leadingIcon = Icons.Outlined.LocationOn,
-                text = userProfile.location
-            )
-        }
 
 
-        Row(horizontalArrangement = Arrangement.spacedBy(10.dp)) {
-            TextWithLeadingIcon(
-                leadingIcon = Icons.Outlined.PersonOutline,
-                text = userProfile.followers.toString() + " followers",
-                modifier = Modifier
-                    .height(25.dp)
-                    .clip(
-                        RoundedCornerShape(5.dp)
-                    )
-                    .border(
-                        width = 0.5.dp,
-                        color = Color.DarkGray,
-                        shape = RoundedCornerShape(5.dp)
-                    )
-                    .background(Color.White)
-                    .clickable {
-                        onNavigateToFollowers(userProfile.username)
-                    }
-                    .padding(3.dp)
-            )
-            TextWithLeadingIcon(
-                leadingIcon = null,
-                text = userProfile.following.toString() + " following",
-                Modifier
-                    .height(25.dp)
-                    .clip(
-                        RoundedCornerShape(5.dp)
-                    )
-                    .border(
-                        width = 0.5.dp,
-                        color = Color.DarkGray,
-                        shape = RoundedCornerShape(5.dp)
-                    )
-                    .background(Color.White)
-                    .clickable {
-                        onNavigateToFollows(userProfile.username)
-                    }
-                    .padding(3.dp)
-            )
+        item {
+            Row(horizontalArrangement = Arrangement.spacedBy(10.dp)) {
+                TextWithLeadingIcon(
+                    leadingIcon = Icons.Outlined.PersonOutline,
+                    text = profile.followers.toString() + " followers",
+                    modifier = Modifier
+                        .height(25.dp)
+                        .clip(
+                            RoundedCornerShape(5.dp)
+                        )
+                        .border(
+                            width = 0.5.dp,
+                            color = Color.DarkGray,
+                            shape = RoundedCornerShape(5.dp)
+                        )
+                        .background(Color.White)
+                        .clickable {
+                            onNavigateToFollowers(profile.username)
+                        }
+                        .padding(3.dp)
+                )
+                TextWithLeadingIcon(
+                    leadingIcon = null,
+                    text = profile.following.toString() + " following",
+                    Modifier
+                        .height(25.dp)
+                        .clip(
+                            RoundedCornerShape(5.dp)
+                        )
+                        .border(
+                            width = 0.5.dp,
+                            color = Color.DarkGray,
+                            shape = RoundedCornerShape(5.dp)
+                        )
+                        .background(Color.White)
+                        .clickable {
+                            onNavigateToFollows(profile.username)
+                        }
+                        .padding(3.dp)
+                )
+            }
         }
 
-        Row(
-            horizontalArrangement = Arrangement.Start,
-            verticalAlignment = Alignment.CenterVertically
-        ) {
-            TextWithLeadingIcon(leadingIcon = Icons.Rounded.Inventory2,
-                text = userProfile.publicRepos.toString() + " Repositories",
-                modifier = Modifier
-                    .height(25.dp)
-                    .clip(
-                        RoundedCornerShape(5.dp)
-                    )
-                    .border(
-                        width = 0.5.dp,
-                        color = Color.DarkGray,
-                        shape = RoundedCornerShape(5.dp)
-                    )
-                    .background(Color.White)
-                    .clickable {
-//                        navController.navigate(Route.ReposScreen.route + "/${userProfile.username}")
-                    }
-                    .padding(3.dp)
-            )
+        item {
+            Row(
+                horizontalArrangement = Arrangement.Start,
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                TextWithLeadingIcon(
+                    leadingIcon = Icons.Rounded.Inventory2,
+                    text = profile.publicRepos.toString() + " Repositories",
+                    modifier = Modifier
+                        .height(25.dp)
+                        .clip(
+                            RoundedCornerShape(5.dp)
+                        )
+                        .border(
+                            width = 0.5.dp,
+                            color = Color.DarkGray,
+                            shape = RoundedCornerShape(5.dp)
+                        )
+                        .background(Color.White)
+                        .padding(3.dp)
+                )
+            }
         }
+
+        items(repos) { repo ->
+            RepoItem(modifier = Modifier, repo = repo, profile = profile)
+        }
+
     }
 }

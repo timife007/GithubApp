@@ -10,7 +10,7 @@ import javax.inject.Inject
 class ReposUseCase @Inject constructor(
     private val userRepository: UserRepository
 ) {
-    operator fun invoke(param1: String): Flow<Result<List<Repo>>> {
+    operator fun invoke(param1: String): Flow<List<Repo>> {
         return userRepository.getRepos(param1)
     }
 }

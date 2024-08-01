@@ -47,15 +47,15 @@ class UserRepositoryImpl @Inject constructor(
         }
     }
 
-    override fun getRepos(user:String): Flow<Result<List<Repo>>> {
+    override fun getRepos(user:String): Flow<List<Repo>> {
         return flow {
             try {
                 val response = remoteDatasource.getUserRepos(user)
                 response.body()?.let {userRepos ->
-                    emit(Result.Success(userRepos.toListOfRepos()))
+                    emit(userRepos.toListOfRepos())
                 }
             }catch (e:Exception){
-                emit(Result.Error(e))
+                throw RuntimeException(e.message)
             }
         }
     }

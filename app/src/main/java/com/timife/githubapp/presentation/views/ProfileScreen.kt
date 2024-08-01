@@ -59,7 +59,7 @@ fun ProfileScreen(
     viewModel: UserProfileViewModel = hiltViewModel()
 ) {
 
-    val state by viewModel.uiState.collectAsState()
+    val state by viewModel.profile.collectAsState()
     Scaffold(modifier = Modifier, topBar = {
         Row(
             modifier = Modifier
@@ -74,8 +74,8 @@ fun ProfileScreen(
         Surface(modifier = Modifier.padding(innerPaddings)) {
             when (state) {
                 is UserProfileUiState.Success -> {
-                    val data = (state as UserProfileUiState.Success).users
-                    ProfileSuccessView(userProfile = data, onNavigateToFollows = { username ->
+                    val data = (state as UserProfileUiState.Success).data
+                    ProfileSuccessView(data = data, onNavigateToFollows = { username ->
                         navController.navigate(Route.FollowsScreen.route + "/${username}")
                     }, onNavigateToFollowers = { username ->
                         navController.navigate(Route.FollowersScreen.route + "/${username}")
