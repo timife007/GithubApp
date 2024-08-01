@@ -10,7 +10,7 @@ import javax.inject.Inject
 class FollowingUseCase @Inject constructor(
     private val followersRepository: FollowersRepository
 ) {
-    operator fun invoke(param1: String): Flow<Result<List<User>>> {
+    operator fun invoke(param1: String): Flow<List<User>> {
         return followersRepository.getFollowing(param1)
     }
 }

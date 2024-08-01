@@ -12,7 +12,17 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavType
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navArgument
+import com.timife.githubapp.navigation.Route
 import com.timife.githubapp.presentation.ui.theme.GithubAppTheme
+import com.timife.githubapp.presentation.views.FollowersScreen
+import com.timife.githubapp.presentation.views.FollowsScreen
+import com.timife.githubapp.presentation.views.ProfileScreen
+import com.timife.githubapp.presentation.views.ReposScreen
 import com.timife.githubapp.presentation.views.SearchScreen
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -22,9 +32,71 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
+            val navController = rememberNavController()
             GithubAppTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    SearchScreen(modifier = Modifier.padding(innerPadding))
+
+                    NavHost(
+                        navController = navController,
+                        startDestination = Route.SearchScreen.route
+                    ) {
+                        composable(route = Route.SearchScreen.route) {
+                            SearchScreen(
+                                modifier = Modifier.padding(innerPadding),
+                                navController = navController
+                            )
+                        }
+                        composable(
+                            route = Route.ProfileScreen.route + "/{username}",
+                            arguments = listOf(
+                                navArgument(
+                                    name = "username"
+                                ) {
+                                    type = NavType.StringType
+                                    defaultValue = ""
+                                })
+                        ) {
+                            ProfileScreen(modifier = Modifier, navController = navController)
+                        }
+                        composable(
+                            route = Route.ReposScreen.route + "/{username}",
+                            arguments = listOf(
+                                navArgument(
+                                    name = "username"
+                                ) {
+                                    type = NavType.StringType
+                                    defaultValue = ""
+                                })
+                        ) {
+                            ReposScreen(modifier = Modifier, navController = navController)
+                        }
+
+                        composable(
+                            route = Route.FollowersScreen.route + "/{username}",
+                            arguments = listOf(
+                                navArgument(
+                                    name = "username"
+                                ) {
+                                    type = NavType.StringType
+                                    defaultValue = ""
+                                })
+                        ) {
+                            FollowersScreen(modifier = Modifier, navController = navController)
+                        }
+
+                        composable(
+                            route = Route.FollowsScreen.route + "/{username}",
+                            arguments = listOf(
+                                navArgument(
+                                    name = "username"
+                                ) {
+                                    type = NavType.StringType
+                                    defaultValue = ""
+                                })
+                        ) {
+                            FollowsScreen(modifier = Modifier, navController = navController)
+                        }
+                    }
                 }
             }
         }

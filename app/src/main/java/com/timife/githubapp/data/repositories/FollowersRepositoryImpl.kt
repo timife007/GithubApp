@@ -15,28 +15,28 @@ import javax.inject.Singleton
 class FollowersRepositoryImpl @Inject constructor(
     private val remoteDatasource: RemoteDatasource
 ) : FollowersRepository {
-    override fun getFollowers(user:String): Flow<Result<List<User>>> {
+    override fun getFollowers(user:String): Flow<List<User>> {
         return flow {
             try {
                 val response = remoteDatasource.getUserFollowers(user)
                 response.body()?.let {followersDto ->
-                    emit(Result.Success(followersDto.toListOfUsers()))
+                    emit(followersDto.toListOfUsers())
                 }
             }catch (e:Exception){
-                emit(Result.Error(e))
+                throw RuntimeException(e.localizedMessage)
             }
         }
     }
 
-    override fun getFollowing(user: String): Flow<Result<List<User>>> {
+    override fun getFollowing(user: String): Flow<List<User>>{
         return flow {
             try {
                 val response = remoteDatasource.getUserFollowing(user)
                 response.body()?.let {following ->
-                    emit(Result.Success(following.toListOfUsers()))
+                    emit(following.toListOfUsers())
                 }
             }catch (e:Exception){
-                emit(Result.Error(e))
+                throw RuntimeException(e.localizedMessage)
             }
         }
     }

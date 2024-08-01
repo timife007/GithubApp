@@ -9,10 +9,3 @@ sealed class SearchUiState {
     data object Loading: SearchUiState()
 }
 
-
-data class UserResult (
-    val name:String,
-    val username:String,
-    val avatar:String,
-    val description:String
-)

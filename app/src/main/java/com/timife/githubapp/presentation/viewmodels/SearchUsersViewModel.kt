@@ -36,11 +36,10 @@ class SearchUsersViewModel @Inject constructor(
     val uiState: StateFlow<SearchUiState> = _uiState
 
 
-    @OptIn(ExperimentalCoroutinesApi::class, FlowPreview::class)
+    @OptIn(ExperimentalCoroutinesApi::class)
     fun getUsers(user: String) {
         _uiState.value = SearchUiState.Loading
         viewModelScope.launch {
-
             searchUseCase(user).catch {
                 _uiState.value = SearchUiState.Error(it.message ?: "Error fetching users")
             }.flatMapConcat { users ->

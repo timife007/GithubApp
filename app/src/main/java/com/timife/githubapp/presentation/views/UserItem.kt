@@ -30,12 +30,13 @@ import com.timife.githubapp.presentation.uistates.UserResult
 
 @Composable
 fun UserItem(
+    modifier: Modifier,
     user: UserResult
 ) {
     Row(
         horizontalArrangement = Arrangement.Start,
-        verticalAlignment = Alignment.Top,
-        modifier = Modifier
+        verticalAlignment = Alignment.CenterVertically,
+        modifier = modifier
             .fillMaxWidth()
             .padding(10.dp)
     ) {
@@ -48,22 +49,26 @@ fun UserItem(
             contentDescription = null
         )
         Spacer(modifier = Modifier.width(10.dp))
-        Column {
-            Text(
-                text = user.name,
-                modifier = Modifier,
-                style = MaterialTheme.typography.bodyMedium.copy(fontWeight = FontWeight.SemiBold)
-            )
+        Column(verticalArrangement = Arrangement.Center) {
+            if(user.name != null){
+                Text(
+                    text = user.name,
+                    modifier = Modifier,
+                    style = MaterialTheme.typography.bodyMedium.copy(fontWeight = FontWeight.SemiBold)
+                )
+            }
             Text(
                 text = user.username,
                 modifier = Modifier,
                 style = MaterialTheme.typography.bodySmall.copy(fontWeight = FontWeight.Normal, color = Color.DarkGray)
             )
-            Text(
-                text = user.description,
-                modifier = Modifier,
-                style = MaterialTheme.typography.bodySmall.copy(fontWeight = FontWeight.Normal)
-            )
+            if(user.description != null){
+                Text(
+                    text = user.description,
+                    modifier = Modifier,
+                    style = MaterialTheme.typography.bodySmall.copy(fontWeight = FontWeight.Normal)
+                )
+            }
         }
     }
 }

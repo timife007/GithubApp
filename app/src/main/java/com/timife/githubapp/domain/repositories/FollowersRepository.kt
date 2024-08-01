@@ -6,7 +6,7 @@ import kotlinx.coroutines.flow.Flow
 
 interface FollowersRepository {
 
-    fun getFollowers(user: String): Flow<Result<List<User>>>
+    fun getFollowers(user: String): Flow<List<User>>
 
-    fun getFollowing(user: String): Flow<Result<List<User>>>
+    fun getFollowing(user: String): Flow<List<User>>
 }
