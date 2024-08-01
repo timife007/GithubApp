@@ -38,7 +38,6 @@ import com.timife.githubapp.presentation.viewmodels.SearchUsersViewModel
 import com.timife.githubapp.presentation.views.components.ErrorView
 import com.timife.githubapp.presentation.views.components.LoadingView
 
-@OptIn(ExperimentalMaterial3Api::class)
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
 fun SearchScreen(

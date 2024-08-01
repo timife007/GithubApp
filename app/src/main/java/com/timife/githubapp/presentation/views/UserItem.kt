@@ -24,8 +24,6 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
-import com.timife.githubapp.R
-import com.timife.githubapp.domain.model.users.User
 import com.timife.githubapp.presentation.uistates.UserResult
 
 @Composable
@@ -35,7 +33,7 @@ fun UserItem(
 ) {
     Row(
         horizontalArrangement = Arrangement.Start,
-        verticalAlignment = Alignment.CenterVertically,
+        verticalAlignment = if(user.description == null) Alignment.CenterVertically else Alignment.Top,
         modifier = modifier
             .fillMaxWidth()
             .padding(10.dp)
