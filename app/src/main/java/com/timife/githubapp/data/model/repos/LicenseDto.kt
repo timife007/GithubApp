@@ -8,13 +8,13 @@ import android.os.Parcelable
 
 data class LicenseDto(
     @Json(name = "key")
-    val key: String,
+    val key: String?,
     @Json(name = "name")
-    val name: String,
+    val name: String?,
     @Json(name = "node_id")
-    val nodeId: String,
+    val nodeId: String?,
     @Json(name = "spdx_id")
-    val spdxId: String,
+    val spdxId: String?,
     @Json(name = "url")
-    val url: String
+    val url: String?
 )

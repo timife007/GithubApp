@@ -59,7 +59,7 @@ fun ProfileScreen(
     viewModel: UserProfileViewModel = hiltViewModel()
 ) {
 
-    val state by viewModel.profile.collectAsState()
+    val state by viewModel.uiState.collectAsState()
     Scaffold(modifier = Modifier, topBar = {
         Row(
             modifier = Modifier
