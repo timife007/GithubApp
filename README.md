@@ -13,7 +13,6 @@ This Github Search App demonstrates modern Android development with Hilt, Corout
   - ViewModel: Manages UI-related data holder and lifecycle aware. Allows data to survive configuration changes such as screen rotations.
   - Stateflow: An observable hot flow for emitting the latest data.
   - Kotlin Flow: A cold flow triggered by the collecting functions.
-  - DataBinding: Binds UI components in your layouts to data sources in your app using a declarative format rather than programmatically.
   - [Hilt](https://dagger.dev/hilt/): for dependency injection.
   - Jetpack compose for UI design layout.
 - Architecture
