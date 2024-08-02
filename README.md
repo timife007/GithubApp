@@ -4,8 +4,6 @@ This Github Search App demonstrates modern Android development with Hilt, Corout
 <p align="center">
 </p>
 
-## Download
-Go to the [Releases]() to download the latest APK.
 
 ## Tech stack & Open-source libraries
 - Minimum SDK level 24
