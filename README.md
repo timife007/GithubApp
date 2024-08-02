@@ -7,7 +7,7 @@ This Github Search App demonstrates modern Android development with Hilt, Corout
 
 ## Tech stack & Open-source libraries
 - Minimum SDK level 24
-- [Kotlin](https://kotlinlang.org/) based, LiveData, [Coroutines](https://github.com/Kotlin/kotlinx.coroutines) + [Flow](https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines.flow/) for asynchronous.
+- [Kotlin](https://kotlinlang.org/) based, StateFlow, [Coroutines](https://github.com/Kotlin/kotlinx.coroutines) + [Flow](https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines.flow/) for asynchronous.
 - Jetpack
   - Lifecycle: Observe Android lifecycles and handle UI states upon the lifecycle changes.
   - ViewModel: Manages UI-related data holder and lifecycle aware. Allows data to survive configuration changes such as screen rotations.
