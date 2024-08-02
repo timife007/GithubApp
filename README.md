@@ -16,7 +16,7 @@ This Github Search App demonstrates modern Android development with Hilt, Corout
   - [Hilt](https://dagger.dev/hilt/): for dependency injection.
   - Jetpack compose for UI design layout.
 - Architecture
-  - MVVM Architecture (View - DataBinding - ViewModel - Model)
+  - MVVM Architecture (View - ViewModel - Model)
 - [ksp](https://github.com/google/ksp): Kotlin Symbol Processing API.
 - [Retrofit](https://github.com/square/retrofit): A networking library for fetching data over the internet
 - [Turbine](https://github.com/cashapp/turbine): A small testing library for kotlinx.coroutines Flow.
