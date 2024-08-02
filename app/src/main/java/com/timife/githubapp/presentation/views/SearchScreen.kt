@@ -25,6 +25,7 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -48,6 +49,7 @@ fun SearchScreen(
 ) {
     val state by viewModel.uiState.collectAsState()
     var text by rememberSaveable { mutableStateOf("") }
+    val focusManager = LocalFocusManager.current
 
 
 
@@ -91,6 +93,7 @@ fun SearchScreen(
                 Button(
                     onClick = {
                         viewModel.getUsers(text)
+                        focusManager.clearFocus(true)
                     },
                     modifier = Modifier
                         .fillMaxWidth()
