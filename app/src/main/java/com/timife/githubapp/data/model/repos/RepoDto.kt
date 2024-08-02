@@ -2,8 +2,6 @@ package com.timife.githubapp.data.model.repos
 
 
 import com.squareup.moshi.Json
-import kotlinx.parcelize.Parcelize
-import android.os.Parcelable
 
 data class RepoDto(
     @Json(name = "allow_forking")

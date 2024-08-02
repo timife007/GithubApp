@@ -11,7 +11,6 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -22,7 +21,6 @@ import com.timife.githubapp.presentation.ui.theme.GithubAppTheme
 import com.timife.githubapp.presentation.views.FollowersScreen
 import com.timife.githubapp.presentation.views.FollowsScreen
 import com.timife.githubapp.presentation.views.ProfileScreen
-import com.timife.githubapp.presentation.views.ReposScreen
 import com.timife.githubapp.presentation.views.SearchScreen
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -56,19 +54,12 @@ class MainActivity : ComponentActivity() {
                                     defaultValue = ""
                                 })
                         ) {
-                            ProfileScreen(modifier = Modifier, navController = navController)
-                        }
-                        composable(
-                            route = Route.ReposScreen.route + "/{username}",
-                            arguments = listOf(
-                                navArgument(
-                                    name = "username"
-                                ) {
-                                    type = NavType.StringType
-                                    defaultValue = ""
+                            ProfileScreen(
+                                modifier = Modifier,
+                                navController = navController,
+                                onNavigateBack = {
+                                    navController.navigateUp()
                                 })
-                        ) {
-                            ReposScreen(modifier = Modifier, navController = navController)
                         }
 
                         composable(
@@ -81,7 +72,10 @@ class MainActivity : ComponentActivity() {
                                     defaultValue = ""
                                 })
                         ) {
-                            FollowersScreen(modifier = Modifier, navController = navController)
+                            FollowersScreen(
+                                modifier = Modifier,
+                                navController = navController,
+                                onNavigateBack = { navController.navigateUp() })
                         }
 
                         composable(
@@ -94,7 +88,12 @@ class MainActivity : ComponentActivity() {
                                     defaultValue = ""
                                 })
                         ) {
-                            FollowsScreen(modifier = Modifier, navController = navController)
+                            FollowsScreen(
+                                modifier = Modifier,
+                                navController = navController,
+                                onNavigateBack = {
+                                    navController.navigateUp()
+                                })
                         }
                     }
                 }

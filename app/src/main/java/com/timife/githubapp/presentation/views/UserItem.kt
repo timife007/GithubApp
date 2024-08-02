@@ -29,7 +29,7 @@ fun UserItem(
 ) {
     Row(
         horizontalArrangement = Arrangement.Start,
-        verticalAlignment = if(user.description == null) Alignment.CenterVertically else Alignment.Top,
+        verticalAlignment = if (user.description == null) Alignment.CenterVertically else Alignment.Top,
         modifier = modifier
             .fillMaxWidth()
             .padding(10.dp)
@@ -44,7 +44,7 @@ fun UserItem(
         )
         Spacer(modifier = Modifier.width(10.dp))
         Column(verticalArrangement = Arrangement.Center) {
-            if(user.name != null){
+            if (user.name != null) {
                 Text(
                     text = user.name,
                     modifier = Modifier,
@@ -54,9 +54,12 @@ fun UserItem(
             Text(
                 text = user.username,
                 modifier = Modifier,
-                style = MaterialTheme.typography.bodySmall.copy(fontWeight = FontWeight.Normal, color = Color.DarkGray)
+                style = MaterialTheme.typography.bodySmall.copy(
+                    fontWeight = FontWeight.Normal,
+                    color = Color.DarkGray
+                )
             )
-            if(user.description != null){
+            if (user.description != null) {
                 Text(
                     text = user.description,
                     modifier = Modifier,

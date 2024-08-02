@@ -7,6 +7,4 @@ sealed class Route(val route:String){
 
     data object FollowsScreen: Route("follows_screen")
 
-    data object ReposScreen: Route("repos_screen")
-
 }

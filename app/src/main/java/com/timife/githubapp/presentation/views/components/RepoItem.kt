@@ -1,17 +1,13 @@
 package com.timife.githubapp.presentation.views.components
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
@@ -29,12 +25,10 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.navigation.compose.rememberNavController
 import coil.compose.AsyncImage
 import com.timife.githubapp.domain.model.repos.Repo
 import com.timife.githubapp.domain.model.userprofile.UserProfile
 import com.timife.githubapp.presentation.ui.theme.GithubAppTheme
-import com.timife.githubapp.presentation.views.SearchScreen
 import com.timife.githubapp.presentation.views.TextWithLeadingIcon
 
 @Composable
@@ -45,7 +39,7 @@ fun RepoItem(
 ) {
 
     Column(
-        modifier = Modifier
+        modifier = modifier
             .clip(
                 RoundedCornerShape(5.dp)
             )
@@ -53,11 +47,15 @@ fun RepoItem(
                 width = 0.5.dp,
                 color = Color.LightGray,
                 shape = RoundedCornerShape(5.dp)
-            ).fillMaxWidth()
+            )
+            .fillMaxWidth()
             .background(Color.White)
             .padding(10.dp)
     ) {
-        Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(5.dp)) {
+        Row(
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.spacedBy(5.dp)
+        ) {
             AsyncImage(
                 model = profile.avatarUrl, contentDescription = null, modifier = Modifier
                     .clip(
@@ -65,7 +63,10 @@ fun RepoItem(
                     )
                     .size(15.dp)
             )
-            Text(text = profile.username, style = MaterialTheme.typography.bodySmall.copy(fontWeight = FontWeight.SemiBold))
+            Text(
+                text = profile.username,
+                style = MaterialTheme.typography.bodySmall.copy(fontWeight = FontWeight.SemiBold)
+            )
         }
         Text(
             text = repo.name,
@@ -79,7 +80,10 @@ fun RepoItem(
             overflow = TextOverflow.Ellipsis,
             maxLines = 1
         )
-        Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(10.dp)) {
+        Row(
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.spacedBy(10.dp)
+        ) {
             TextWithLeadingIcon(leadingIcon = Icons.Filled.Star, text = repo.stars.toString())
             TextWithLeadingIcon(leadingIcon = Icons.Filled.Circle, text = repo.language)
         }
@@ -95,13 +99,15 @@ fun RepoItemPreview() {
             RepoItem(
                 Modifier.padding(10.dp),
                 Repo(1, "", true, "", false, "", "", 2, "public", 10),
-                UserProfile("",
+                UserProfile(
+                    "",
                     10,
                     "", 10,
                     "", 10, "",
                     "", "", 10, "",
                     "",
-                    "")
+                    ""
+                )
             )
         }
     }

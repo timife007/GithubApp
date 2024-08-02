@@ -1,11 +1,9 @@
 package com.timife.githubapp.data.repositories
 
-import android.util.Log
 import com.timife.githubapp.data.datasources.remote.RemoteDatasource
 import com.timife.githubapp.data.mappers.toListOfRepos
 import com.timife.githubapp.data.mappers.toListOfUsers
 import com.timife.githubapp.data.mappers.toUserProfile
-import com.timife.githubapp.domain.Result
 import com.timife.githubapp.domain.model.repos.Repo
 import com.timife.githubapp.domain.model.userprofile.UserProfile
 import com.timife.githubapp.domain.model.users.User
@@ -23,38 +21,37 @@ class UserRepositoryImpl @Inject constructor(
         return flow {
             try {
                 val response = remoteDatasource.searchUsers(query)
-                response.body()?.let {searchResponse ->
+                response.body()?.let { searchResponse ->
                     searchResponse.userDtos.toListOfUsers()
                         .let { emit(it) }
                 }
-            }catch (e:Exception){
-                Log.d("CHECK ERROR",e.localizedMessage)
+            } catch (e: Exception) {
                 throw RuntimeException(e.localizedMessage)
             }
         }
     }
 
-    override fun getUserProfile(user:String): Flow<UserProfile> {
+    override fun getUserProfile(user: String): Flow<UserProfile> {
         return flow {
             try {
                 val response = remoteDatasource.getUserProfile(user)
-                response.body()?.let {userProfileDto ->
+                response.body()?.let { userProfileDto ->
                     emit(userProfileDto.toUserProfile())
                 }
-            }catch (e:Exception){
+            } catch (e: Exception) {
                 throw RuntimeException(e.localizedMessage)
             }
         }
     }
 
-    override fun getRepos(user:String): Flow<List<Repo>> {
+    override fun getRepos(user: String): Flow<List<Repo>> {
         return flow {
             try {
                 val response = remoteDatasource.getUserRepos(user)
-                response.body()?.let {userRepos ->
+                response.body()?.let { userRepos ->
                     emit(userRepos.toListOfRepos())
                 }
-            }catch (e:Exception){
+            } catch (e: Exception) {
                 throw RuntimeException(e.message)
             }
         }

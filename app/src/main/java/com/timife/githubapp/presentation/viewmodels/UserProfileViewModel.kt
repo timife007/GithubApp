@@ -23,12 +23,14 @@ class UserProfileViewModel @Inject constructor(
     private val _uiState = MutableStateFlow<UserProfileUiState>(UserProfileUiState.Loading)
     val uiState: StateFlow<UserProfileUiState> = _uiState
 
-//    private val _username = MutableStateFlow<String>("")
-//    val username: StateFlow<String> = _username
+    private val _title = MutableStateFlow<String>("")
+    val title: StateFlow<String> = _title
 
     init {
         savedStateHandle.get<String>("username")?.let { user ->
-//            _username.value = user
+            _title.update {
+                user
+            }
             fetchUserProfile(user)
         }
     }

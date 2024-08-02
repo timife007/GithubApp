@@ -2,8 +2,6 @@ package com.timife.githubapp.data.model.userprofile
 
 
 import com.squareup.moshi.Json
-import kotlinx.parcelize.Parcelize
-import android.os.Parcelable
 
 
 data class UserProfileDto(

@@ -44,19 +44,24 @@ class SearchUsersViewModel @Inject constructor(
                 _uiState.value = SearchUiState.Error(it.message ?: "Error fetching users")
             }.flatMapConcat { users ->
 
-                val userProfileFlows = users.map {user ->
+                val userProfileFlows = users.map { user ->
                     userProfileUseCase(user.username).map {
-                        it.let {profile ->
-                            UserResult(name = profile.name, username = profile.username, avatar = profile.avatarUrl, description = profile.bio)
+                        it.let { profile ->
+                            UserResult(
+                                name = profile.name,
+                                username = profile.username,
+                                avatar = profile.avatarUrl,
+                                description = profile.bio
+                            )
                         }
                     }.catch {
                         _uiState.value = SearchUiState.Error(it.message ?: "Error fetching users")
                     }
                 }
-                combine(userProfileFlows){userResults ->
+                combine(userProfileFlows) { userResults ->
                     userResults
                 }
-            }.collect{
+            }.collect {
                 _uiState.value = SearchUiState.Success(it.toList())
             }
 

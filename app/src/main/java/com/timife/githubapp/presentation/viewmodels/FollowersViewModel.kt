@@ -3,17 +3,14 @@ package com.timife.githubapp.presentation.viewmodels
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.timife.githubapp.domain.Result
 import com.timife.githubapp.domain.usecases.FollowersUseCase
-import com.timife.githubapp.domain.usecases.FollowingUseCase
 import com.timife.githubapp.presentation.uistates.FollowersUiState
-import com.timife.githubapp.presentation.uistates.FollowingsUiState
-import com.timife.githubapp.presentation.uistates.UserProfileUiState
 import com.timife.githubapp.presentation.uistates.toUserResult
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.catch
+import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -25,9 +22,15 @@ class FollowersViewModel @Inject constructor(
     private val _uiState = MutableStateFlow<FollowersUiState>(FollowersUiState.Loading)
     val uiState: StateFlow<FollowersUiState> = _uiState
 
+    private val _title = MutableStateFlow<String>("")
+    val title: StateFlow<String> = _title
+
     init {
         savedStateHandle.get<String>("username")?.let { user ->
             getFollowers(user)
+            _title.update {
+                user
+            }
         }
     }
 
