@@ -23,7 +23,8 @@ class UserRepositoryImpl @Inject constructor(
                 val response = remoteDatasource.searchUsers(query)
                 response.body()?.let { searchResponse ->
                     searchResponse.userDtos.toListOfUsers()
-                        .let { emit(it) }
+                        .let {
+                            emit(it) }
                 }
             } catch (e: Exception) {
                 throw RuntimeException(e.localizedMessage)

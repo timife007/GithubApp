@@ -102,13 +102,22 @@ dependencies {
     implementation(libs.moshi.kotlin)
     implementation(libs.json.serializer)
     implementation(libs.logging.interceptor)
-//    implementation(l)
-//    implementation(libs.hilt.compiler)
     implementation(libs.chuckerLib)
-    testImplementation(libs.junit)
 
 
+
     testImplementation(libs.junit)
+    testImplementation(libs.coroutines.test)
+    testImplementation(libs.core.test)
+    testImplementation(libs.truth)
+    testImplementation(libs.turbine)
+    testImplementation(libs.mockk)
+    testImplementation(libs.runner)
+
+    androidTestImplementation(libs.truth)
+    androidTestImplementation(libs.coroutines.test)
+    androidTestImplementation(libs.core.test)
+    androidTestImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
     androidTestImplementation(platform(libs.androidx.compose.bom))

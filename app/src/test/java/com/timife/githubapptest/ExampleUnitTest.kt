@@ -1,4 +1,4 @@
-package com.timife.skiywatertest
+package com.timife.githubapptest
 
 import org.junit.Test
 

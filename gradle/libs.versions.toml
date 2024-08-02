@@ -28,7 +28,12 @@ appcompat = "1.7.0"
 material = "1.12.0"
 moshi="1.15.1"
 json-serializer = "1.3.0"
-material3 = "1.3.0-beta04"
+material3 = "1.3.0-beta05"
+core = "2.2.0"
+testRunner = "1.6.1"
+truth = "1.0.1"
+turbine = "0.12.1"
+mockk = "1.12.4"
 
 
 [libraries]
@@ -65,7 +70,6 @@ androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 retrofit = {group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofit"}
 chuckerLib = {group = "com.github.chuckerteam.chucker", name = "library", version.ref = "chucker"}
-chuckerNoOp = {group = "com.github.chuckerteam.chucker", name = "library-no-op", version.ref = "chucker"}
 moshi-converter = {group = "com.squareup.retrofit2", name = "converter-moshi", version.ref = "retrofit"}
 okHttp = {group = "com.squareup.okhttp3", name = "okhttp", version.ref = "okHttp"}
 interceptor = {group = "com.squareup.okhttp3", name = "logging-interceptor", version.ref = "okHttp"}
@@ -73,7 +77,12 @@ moshi = {group = "com.squareup.moshi", name = "moshi", version.ref = "moshi"}
 moshi-kotlin = {group = "com.squareup.moshi", name = "moshi-kotlin", version.ref = "moshi"}
 json-serializer = {group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version.ref = "json-serializer"}
 logging-interceptor = {group = "com.squareup.okhttp3", name = "logging-interceptor", version.ref = "okHttp"}
-#jetbrainsCompose = { id = "org.jetbrains.compose", version.ref = "compose"
+coroutines-test = {group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-test", version.ref = "coroutines"}
+core-test = {group = "androidx.arch.core", name = "core-testing", version.ref = "core"}
+turbine = {group = "app.cash.turbine", name = "turbine", version.ref = "turbine"}
+mockk = {group = "io.mockk", name = "mockk", version.ref = "mockk"}
+truth = {group = "com.google.truth", name = "truth", version.ref = "truth"}
+runner = {group = "androidx.test", name = "runner", version.ref = "testRunner"}
 
 
 [plugins]

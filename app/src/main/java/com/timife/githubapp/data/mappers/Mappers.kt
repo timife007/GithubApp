@@ -29,7 +29,7 @@ fun List<UserDto>.toListOfUsers(): List<User>{
     return this.map {
         User(
             avatarUrl = it.avatarUrl,
-            followersUrl = it.followingUrl,
+            followersUrl = it.followersUrl,
             followingUrl = it.followingUrl,
             id = it.id,
             username = it.login,
