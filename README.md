@@ -46,10 +46,10 @@ To build this project, you require:
 - Kotlin version 2.0.0,
 - Clone the repository.
 - Get your personalized github BEARER TOKEN from your github profile and set the value as 'bearer-token' in your local.properties file and rebuild your project.
-- How to Get your token:
-  (Setting -> Developer Settings -> Personal Access tokens -> Fine-grained tokens -> Generate new token) and follow the instructions.
-  Next, copy the token generated and paste it in your local.properties file in the app.
-  Assign the value to bearer token like this:
+## How to Get your token:
+- Navigate from your github (Setting -> Developer Settings -> Personal Access tokens -> Fine-grained tokens -> Generate new token) and follow the instructions.
+- Next, copy the token generated and paste it in your local.properties file in the app.
+- Assign the value to bearer token like this:
   bearer-token=hhhhhhhhh.
-  N-B: do not use string quotes for the token, just paste it directly in the profile as instructed, and build the app.
+- N-B: do not use string quotes for the token, just paste it directly in the profile as instructed, and build the app.
 
