@@ -1,9 +1,5 @@
-package com.timife.githubapp.domain.model.userprofile
+package com.timife.githubapp.domain.entities.userprofile
 
-
-import com.squareup.moshi.Json
-import kotlinx.parcelize.Parcelize
-import android.os.Parcelable
 
 data class UserProfile(
     val bio: String,

@@ -1,4 +1,4 @@
-package com.timife.githubapp.domain.model.repos
+package com.timife.githubapp.domain.entities.repos
 
 data class Repo(
     val id: Int,

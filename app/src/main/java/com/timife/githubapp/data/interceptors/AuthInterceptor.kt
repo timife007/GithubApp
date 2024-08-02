@@ -1,4 +1,4 @@
-package com.timife.githubapp.interceptors
+package com.timife.githubapp.data.interceptors
 
 import com.timife.githubapp.BuildConfig
 import okhttp3.Interceptor

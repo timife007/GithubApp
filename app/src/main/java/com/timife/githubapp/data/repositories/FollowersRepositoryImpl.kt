@@ -2,7 +2,7 @@ package com.timife.githubapp.data.repositories
 
 import com.timife.githubapp.data.datasources.remote.RemoteDatasource
 import com.timife.githubapp.data.mappers.toListOfUsers
-import com.timife.githubapp.domain.model.users.User
+import com.timife.githubapp.domain.entities.users.User
 import com.timife.githubapp.domain.repositories.FollowersRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow

@@ -3,9 +3,9 @@ package com.timife.githubapp.data.mappers
 import com.timife.githubapp.data.model.repos.RepoDto
 import com.timife.githubapp.data.model.userprofile.UserProfileDto
 import com.timife.githubapp.data.model.users.UserDto
-import com.timife.githubapp.domain.model.repos.Repo
-import com.timife.githubapp.domain.model.userprofile.UserProfile
-import com.timife.githubapp.domain.model.users.User
+import com.timife.githubapp.domain.entities.repos.Repo
+import com.timife.githubapp.domain.entities.userprofile.UserProfile
+import com.timife.githubapp.domain.entities.users.User
 
 fun UserProfileDto.toUserProfile():UserProfile{
     return UserProfile(

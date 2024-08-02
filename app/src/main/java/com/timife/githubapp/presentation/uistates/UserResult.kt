@@ -1,6 +1,6 @@
 package com.timife.githubapp.presentation.uistates
 
-import com.timife.githubapp.domain.model.users.User
+import com.timife.githubapp.domain.entities.users.User
 
 data class UserResult(
     val name: String?,

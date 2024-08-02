@@ -1,9 +1,5 @@
-package com.timife.githubapp.domain.model.users
+package com.timife.githubapp.domain.entities.users
 
-
-import com.squareup.moshi.Json
-import kotlinx.parcelize.Parcelize
-import android.os.Parcelable
 
 data class User(
     val avatarUrl: String,

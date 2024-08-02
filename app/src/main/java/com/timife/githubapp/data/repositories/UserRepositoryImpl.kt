@@ -4,9 +4,9 @@ import com.timife.githubapp.data.datasources.remote.RemoteDatasource
 import com.timife.githubapp.data.mappers.toListOfRepos
 import com.timife.githubapp.data.mappers.toListOfUsers
 import com.timife.githubapp.data.mappers.toUserProfile
-import com.timife.githubapp.domain.model.repos.Repo
-import com.timife.githubapp.domain.model.userprofile.UserProfile
-import com.timife.githubapp.domain.model.users.User
+import com.timife.githubapp.domain.entities.repos.Repo
+import com.timife.githubapp.domain.entities.userprofile.UserProfile
+import com.timife.githubapp.domain.entities.users.User
 import com.timife.githubapp.domain.repositories.UserRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow

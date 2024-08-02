@@ -26,8 +26,8 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
-import com.timife.githubapp.domain.model.repos.Repo
-import com.timife.githubapp.domain.model.userprofile.UserProfile
+import com.timife.githubapp.domain.entities.repos.Repo
+import com.timife.githubapp.domain.entities.userprofile.UserProfile
 import com.timife.githubapp.presentation.ui.theme.GithubAppTheme
 import com.timife.githubapp.presentation.views.TextWithLeadingIcon
 

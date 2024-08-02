@@ -1,7 +1,6 @@
 package com.timife.githubapp.presentation.uistates
 
-import com.timife.githubapp.domain.model.repos.Repo
-import com.timife.githubapp.domain.model.userprofile.UserProfile
+import com.timife.githubapp.domain.entities.userprofile.UserProfileData
 
 sealed class UserProfileUiState {
     data class Success(val data: UserProfileData) : UserProfileUiState()
@@ -9,7 +8,3 @@ sealed class UserProfileUiState {
     data object Loading : UserProfileUiState()
 }
 
-data class UserProfileData(
-    val profile: UserProfile,
-    val repos: List<Repo>
-)

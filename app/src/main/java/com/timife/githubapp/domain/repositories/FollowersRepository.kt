@@ -1,6 +1,6 @@
 package com.timife.githubapp.domain.repositories
 
-import com.timife.githubapp.domain.model.users.User
+import com.timife.githubapp.domain.entities.users.User
 import kotlinx.coroutines.flow.Flow
 
 interface FollowersRepository {
