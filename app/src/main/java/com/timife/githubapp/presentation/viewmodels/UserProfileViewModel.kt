@@ -3,10 +3,9 @@ package com.timife.githubapp.presentation.viewmodels
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.timife.githubapp.domain.Result
+import com.timife.githubapp.domain.entities.userprofile.UserProfileData
 import com.timife.githubapp.domain.usecases.ReposUseCase
 import com.timife.githubapp.domain.usecases.UserProfileUseCase
-import com.timife.githubapp.presentation.uistates.UserProfileData
 import com.timife.githubapp.presentation.uistates.UserProfileUiState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.*
@@ -23,7 +22,7 @@ class UserProfileViewModel @Inject constructor(
     private val _uiState = MutableStateFlow<UserProfileUiState>(UserProfileUiState.Loading)
     val uiState: StateFlow<UserProfileUiState> = _uiState
 
-    private val _title = MutableStateFlow<String>("")
+    private val _title = MutableStateFlow("")
     val title: StateFlow<String> = _title
 
     init {
