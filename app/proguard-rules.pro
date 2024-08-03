@@ -19,3 +19,31 @@
 # If you keep the line number information, uncomment this to
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
+
+# Keep Moshi classes
+-keep class com.squareup.moshi.** { *; }
+
+# Keep Retrofit classes
+-keep class retrofit2.** { *; }
+
+# Keep OkHttp classes
+-keep class okhttp3.** { *; }
+
+# Keep your model classes
+-keep class com.timife.githubapp.data.model.** { *; }
+
+# Keep generated adapters
+-keep class com.yourpackage.**JsonAdapter { *; }
+
+# Keep annotations
+-keepattributes Signature
+-keepattributes RuntimeVisibleAnnotations
+-keepattributes Signature
+-keepattributes RuntimeVisibleAnnotations
+-dontwarn com.oracle.svm.core.annotate.Delete
+-dontwarn com.oracle.svm.core.annotate.Substitute
+-dontwarn com.oracle.svm.core.annotate.TargetClass
+-dontwarn java.lang.Module
+-dontwarn org.graalvm.nativeimage.hosted.Feature$BeforeAnalysisAccess
+-dontwarn org.graalvm.nativeimage.hosted.Feature
+-dontwarn org.graalvm.nativeimage.hosted.RuntimeResourceAccess
